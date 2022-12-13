@@ -1,0 +1,13 @@
+{
+  "name": "reservas-hotel",
+  "version": "1.0.0",
+  "description": "Vamos a simular un formulario de reserva de un hotel. Para ello añade los siguientes inputs a tu HTML:",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

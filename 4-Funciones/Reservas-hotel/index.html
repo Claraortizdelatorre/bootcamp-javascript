@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/site.css" />
+    <title>Document</title>
+</head>
+<body>
+    
+   
+
+    <div class="container">
+        <h1>Reservas hotel</h1>
+
+        <div class="container-type">
+            <label class="label" for="room">Tipo de habitación</label>
+            <select name="room" class="select-menu" id="room-type-input">
+                <option value="standard" id="standard" class="room-type">Estándar - 100€ / n</option>
+                <option value="junior" id="junior" class="room-type">Junior Suite - 120€ / n</option>
+                <option value="suite" id="suite" class="room-type">Suite - 150€ / n</option>
+            </select>
+        </div>
+
+        <div class="container-checkbox">
+            <label class="label" for="spa">SPA</label>
+            <input type="checkbox" id="checkbox-spa"/>
+        </div>
+
+        <div class="container-room">
+            <label class="label" for="room">Ocupación habitación</label>
+            <select name="room" class="select-menu" id="room-input">
+                <option value="individual" id="individual" class="room-type">Individual/ n</option>
+                <option value="double" id="double" class="room-type">Doble - 120€ / n</option>
+                <option value="triple" id="triple" class="room-type">Triple - 150€ / n</option>
+            </select>
+        </div>
+
+        <div class="container-nights">
+            <label class="label" for="number-nights">Nº de noches:</label>
+            <input type="number" id="number-nights"/>
+        </div>
+
+
+        <div class="container-nights-parking">
+            <label class="label" for="number-nights-parking">Nº de noches parking:</label>
+            <input type="number" id="number-nights-parking"/>
+        </div>
+
+        <div>
+            <button id="button-result">Calcular</button>
+        </div>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

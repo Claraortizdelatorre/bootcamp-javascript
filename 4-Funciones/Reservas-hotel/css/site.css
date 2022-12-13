@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: floralwhite;
+    justify-content: center;
+    align-items: center;
+    width:500px;
+	padding:16px;
+	border-radius:10px;
+    border: solid 1px black;
+	margin:auto;
+}
+
+.container-checkbox,
+.container-nights,
+.container-nights-parking
+{
+    display: flex;
+    flex-direction: row;
+    padding-top: 5%;
+}
+
+
+
+
+button {
+    background-color: gray;
+    margin: 8px 0 32px 0;
+    font-size: 16px;
+    padding: 16px 24px; 
+  }
+  
