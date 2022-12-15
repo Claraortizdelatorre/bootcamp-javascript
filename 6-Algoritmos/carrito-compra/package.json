@@ -1,0 +1,13 @@
+{
+  "name": "carrito-compra",
+  "version": "1.0.0",
+  "description": "Vamos a implementar un carrito de la compra donde el usuario pueda elegir las unidades que desea de cada producto, a partir de una lista de productos dada.",
+  "main": "index.js",
+  "scripts": {
+    "dev":"lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
