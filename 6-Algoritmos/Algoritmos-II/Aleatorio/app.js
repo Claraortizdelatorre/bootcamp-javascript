@@ -4,6 +4,4 @@ var randomPick = (n, min, max) => {
     }
   }
 
-
-
   randomPick(10, 1, 100);

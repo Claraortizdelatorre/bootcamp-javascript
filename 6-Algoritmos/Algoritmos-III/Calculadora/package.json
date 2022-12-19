@@ -1,0 +1,13 @@
+{
+  "name": "calculadora",
+  "version": "1.0.0",
+  "description": "Vamos a implementar una calculadora de cambio óptimo en base a un importe de compra y la cantidad entregada por el cliente.",
+  "main": "index.js",
+  "scripts": {
+    "dev":"lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
