@@ -1,3 +1,4 @@
+//HOTELES
 var hoteles = {
     Mencey: {
       name: "Mencey",
