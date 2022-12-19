@@ -1,0 +1,12 @@
+{
+  "name": "algoritmos-ii",
+  "version": "1.0.0",
+  "description": "Vamos a implementar un encriptador / desencriptador de mensajes utilizando esta técnica.",
+  "main": "index.js",
+  "scripts": {
+    "dev":"lite-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
