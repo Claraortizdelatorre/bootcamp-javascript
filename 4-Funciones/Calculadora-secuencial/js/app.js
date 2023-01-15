@@ -94,7 +94,6 @@ refresh.addEventListener('click', _ => {
 })
 
 
-
 //Onclick
 document.getElementById("add").addEventListener("click", result_add);
 document.getElementById("subtract").addEventListener("click", result_subtract);
