@@ -4,9 +4,12 @@
   "description": "Vamos a implementar un encriptador / desencriptador de mensajes utilizando esta técnica.",
   "main": "index.js",
   "scripts": {
-    "dev":"lite-server"
+    "dev": "lite-server"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "2.3"
+  }
 }

@@ -2,7 +2,7 @@ const bills = [200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01];
 var type;
 var paymentChange = (money, change) => change / money;
 
-
+//LIMPIAR LISTADO AL AÑADIR
 var printList = (message) => {
     var list = document.getElementById('list');
     var item = document.createElement('li');

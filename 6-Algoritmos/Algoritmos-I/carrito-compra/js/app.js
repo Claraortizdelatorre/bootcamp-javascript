@@ -3,6 +3,9 @@ const REGULAR_TYPE = 21;
 const LOWER_TYPE = 4;
 const EXEMPT_TYPE = 0;
 
+//quitar numeros negativos
+
+
 // Entrada.
 const products = [
   {
