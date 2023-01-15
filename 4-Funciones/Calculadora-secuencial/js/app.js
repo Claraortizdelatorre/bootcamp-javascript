@@ -1,82 +1,108 @@
-
-//Recojo datos de input
 let number_result = 0;
 var number = () => parseInt(document.getElementById("input-number").value);
+const arrayNumber = [];
 
-function result_add(){
 
-    console.log("entra en la suma ", number_result);
+function checkEmpty(){
     if(isNaN(number())){
-        document.getElementById("result").innerHTML = "Rellena el campo";   
-    }else{
-        number_result += number();
-        clean();
+        document.getElementById("result").innerHTML = "Rellena el campo";
+    }  
+}
+
+/*Añadir array*/
+function result_add(){
+    if(!checkEmpty()){
+        arrayNumber.push(number())
+        arrayNumber.push('+')
     }
+    inputReset() 
 }
 
 function result_subtract(){
-
-    if(isNaN(number())){
-        document.getElementById("result").innerHTML = "Rellena el campo";
-    }else{
-        if (number_result === 0){
-            number_result = number();
-
-        }else if(number_result < number()){
-            number_result = number() - number_result;
-
-        }else{
-            number_result -=number();
-        }
-       
-        clean();
-    }
+    if(!checkEmpty()){
+        arrayNumber.push(number())
+        arrayNumber.push('-')
+    } 
+    inputReset() 
 }
 
 function result_divide(){
-
-    if(isNaN(number())){
-        document.getElementById("result").innerHTML = "Rellena el campo";
-    }else{
-        number_result /= number();
-        clean();
-    }
+    if(!checkEmpty()){
+        arrayNumber.push(number())
+        arrayNumber.push('/')
+    } 
+    inputReset() 
 }
 
 function result_multiply(){
+    if(!checkEmpty()){
+        arrayNumber.push(number())
+        arrayNumber.push('*')
+    }
+    inputReset() 
+}
 
-    if(isNaN(number())){
-        document.getElementById("result").innerHTML = "Rellena el campo";
+
+
+function setResult() {
+    let result = 0;
+    arrayNumber.push(number());
+
+    for(let i = 0 ; i < arrayNumber.length ; i++){
+
+        if(i===0){
+            result = arrayNumber[i]
+        }
+        if(arrayNumber[i] === '+'){
+            result += arrayNumber[i+1];
+        }else if(arrayNumber[i] === '-'){
+            result -=  arrayNumber[i+1];
+        }else if(arrayNumber[i] === '*'){
+            result *= arrayNumber[i+1];
+        }else if(arrayNumber[i] === '/'){
+            result /= arrayNumber[i+1];
+        }
+      
+    }
+    return result;
+}
+
+
+function inputReset() {
+    //arrayNumber = [];
+    document.getElementById("input-number").value = "";
+    
+}
+
+
+function print(){
+    let result = setResult();
+
+    if(Number.isNaN(result)){
+        document.getElementById("result").innerHTML =  "Rellena el campo";
     }else{
-
-        number_result *= number();
-        clean();
+        document.getElementById("result").innerHTML = "Resultado:   " + parseInt(result);
+        inputReset();
     }
 }
 
-function same(){
-    return setResult(number_result);   
-}
 
-function setResult(result) {
-    document.getElementById("result").innerHTML = "Resultado:  " + result;
-}
+//Reset
+let refresh = document.getElementById('button-reset');
+refresh.addEventListener('click', _ => {
+            location.reload();
+})
 
-function inputReset() {
-    document.getElementById("input-number").value = "";
-}
 
-function clean(){
-    inputReset();
-    document.getElementById("result").innerHTML = "";
-}
 
 //Onclick
 document.getElementById("add").addEventListener("click", result_add);
 document.getElementById("subtract").addEventListener("click", result_subtract);
 document.getElementById("divide").addEventListener("click", result_divide);
 document.getElementById("multiply").addEventListener("click", result_multiply);
-document.getElementById("button-result").addEventListener("click", same);
+document.getElementById("button-result").addEventListener("click", print);
+//document.getElementById("button-reset").addEventListener("click", reset);
+
 
 
 
