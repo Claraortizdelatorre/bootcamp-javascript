@@ -19,49 +19,50 @@ const empleado = {
     pagas: 14,
   };
 
-  //Si el empleado tiene hijos, restarle a la retencion 2 puntos.
-  function sons(empleado){
-    return empleado.hijos > 0 ? 0.20 : 0;
-  }
 
-  function retention(empleado){
-    var total;
-    const points = sons(empleado);
+  //retención
+  function getRetent(empleado){
+    var retent;
 
     if(empleado.bruto <= 12000){
-        total = empleado.bruto;
+      retent = empleado.bruto;
 
     }else if(empleado.bruto <= 24000){
-        total = empleado.bruto - (empleado.bruto * (0.08  - points));
+      retent = empleado.bruto - (empleado.bruto * 0.08 );
 
     }else if(empleado.bruto <= 34000){
-        total = empleado.bruto - (empleado.bruto * (0.16 - points));
+      retent = empleado.bruto - (empleado.bruto * 0.16 );
 
     }else if(empleado.bruto > 34000){
-        total = empleado.bruto - (empleado.bruto * (0.30 - points));
+      retent = empleado.bruto - (empleado.bruto * 0.30 );
 
     }
+   
+    return retent;
+  }
 
-    return total;
+  //neto anual
+  function getAnnualSalary(empleado){
+    var retent = getRetent(empleado);
+    return empleado.hijos > 0 ? retent - 0.02 : retent;
+  }
+
+  //neto mensual
+  function getMonthlySalary(empleado){
+    var annualSalary = getAnnualSalary(empleado)
+    return empleado.pagas === 14 ? annualSalary/14 : annualSalary/12;
   }
 
 
-//Siguiente paso, sacar el neto mensual (si es catorce pagas dividir por catorce, si no por 12)
-  function monthly(empleado){
-    return empleado.pagas === 14 ? 14 : 12;
-  }
 
 function print(empleado) {
-
-    const ret = retention(empleado);
-    const points = sons(empleado);
-    const net = monthly(empleado);
-    const total = (ret/net);
+    const retent = getRetent(empleado);
+    const netAnnualSalary = getAnnualSalary(empleado);
+    const netMonthlySalary = getMonthlySalary(empleado);
   
-    console.log("Retencion:", ret + "€");
-    console.log("points:", points);
-    console.log("net:"+ net);
-    console.log("Total:" + total);
+    console.log("Retención:", retent + "€");
+    console.log("Salario neto anual:"+ netAnnualSalary.toFixed(2) + "€");
+    console.log("Salario neto mensual:" + netMonthlySalary.toFixed(2) + "€");
   }
 
 var result = print(empleado);

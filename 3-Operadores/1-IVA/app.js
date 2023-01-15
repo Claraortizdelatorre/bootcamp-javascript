@@ -20,14 +20,21 @@ function getTotal(product){
 
 function getTotalVat(product){
 
+    var vat;
     switch(product.type){
         case "alimentacion":
-            return (product.price * 0.1);
+            vat = 0.1;
+            break;
+           
         case "libro":
-            return  (product.price* 0.04);
+            vat = 0.4;
+            break;
+           
         default:
-            return (product.price * 0.21);
+           vat = 0.21;
     }
+
+    return  product.count * product.price* vat;
 }
 
 function printProductPrice(product) {
@@ -35,9 +42,9 @@ function printProductPrice(product) {
     const vat = getTotalVat(product);
     const total = (subtotal + vat);
   
-    console.log("Subtotal:", subtotal + "€");
-    console.log("IVA:", vat + "€");
-    console.log("Total:"+ total + "€");
+    console.log("Subtotal:", subtotal.toFixed(2) + "€");
+    console.log("IVA:", vat.toFixed(2) + "€");
+    console.log("Total:"+ total.toFixed(2) + "€");
   }
 
 
