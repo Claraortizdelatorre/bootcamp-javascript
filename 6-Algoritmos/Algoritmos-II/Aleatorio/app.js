@@ -15,13 +15,7 @@ var randomPick = (n, min, max) => {
 
     }while(index < n);
 
-    
-    
     console.log(number);
   }
 
-
   randomPick(6, 1, 6);
-
-  //meterlos en array y print, no se pueden repetir numeros
-  //2 funciones, no bucle for , 6 numeros , del 1 al 6

@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "9-llamadas_asincronas",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.2.1"
+    "axios": "^1.2.2"
   },
   "devDependencies": {
     "buffer": "^5.7.1"
