@@ -36,9 +36,10 @@ function list(carrito){
         console.log(article.name + " - " + article.price + "€/ud")
     });
 }
-
+// poner cantidad, prime o no, 
 //Borrar producto
-
+//eliminar por consola
+//js html aparte
 function delete_product(id){
     for(let i = 0; i < carrito.length; i++){
         if(carrito[i].id === id ){
@@ -48,13 +49,13 @@ function delete_product(id){
 }
 
 //Calcular total
-function total(){
+function total(carrito){
     let total = 0;
     carrito.forEach(function(article) {
        total += article.price*article.count
     });
 
-    //aplicar descuento
+    //aplicar descuento en otra funcion
     if(total > 100){
         total = total - (total*0.05)
     }
@@ -63,7 +64,10 @@ function total(){
     return total.toFixed(2);
 }
 
-function filter_prime(){
+
+
+
+function filter_prime(carrito){ 
     console.log("-  PRIME - ")
     const result = carrito.filter(product => product.premium === true);
 
@@ -81,11 +85,18 @@ function filter_prime(){
 list(carrito)
 delete_product(54657);
 list(carrito);
-total();
-filter_prime();
+total(carrito);
+filter_prime(carrito);
+
+
 
 
 //Mostrar en html
+
+function hasShippingCosts(carrito){
+    //comprobar long del carrito con la longitud del p prime
+}
+
 document.write("<h1>" + "Carrito de la compra" + "</h1>")
     carrito.forEach(function(article) {
         document.write("<ul>")
@@ -95,3 +106,5 @@ document.write("<h1>" + "Carrito de la compra" + "</h1>")
 
     let div_total = document.write("<div>Total: " + total() + "</div>")
 
+
+  

@@ -13,6 +13,8 @@ Si el empleado tiene hijos, restarle a la retencion 2 puntos. Con esto sacaríam
 Siguiente paso, sacar el neto mensual (si es catorce pagas dividir por catorce, si no por 12)
 */
 
+// restar 2
+
 const empleado = {
     bruto: 14500,
     hijos: 2,
@@ -21,36 +23,39 @@ const empleado = {
 
 
   //retención
-  function getRetent(empleado){
+  function getRetent(empleado){ //devolver el % de retencion ej.0,23
     var retent;
+    var retent_sons = 0;
+
+    if (empleado.hijos > 0){
+      retent_sons = 0.02;
+    }
+
 
     if(empleado.bruto <= 12000){
-      retent = empleado.bruto;
+      retent = retent_sons;
 
     }else if(empleado.bruto <= 24000){
-      retent = empleado.bruto - (empleado.bruto * 0.08 );
+      retent = 0.08 - retent_sons; 
 
     }else if(empleado.bruto <= 34000){
-      retent = empleado.bruto - (empleado.bruto * 0.16 );
+      retent = 0.16 - retent_sons;
 
     }else if(empleado.bruto > 34000){
-      retent = empleado.bruto - (empleado.bruto * 0.30 );
+      retent = 0.30 - retent_sons;
 
     }
-   
-    return retent;
+    return retent; // aqui restar 0.02 (si no tiene retencion devolver 0)
   }
 
   //neto anual
   function getAnnualSalary(empleado){
-    var retent = getRetent(empleado);
-    return empleado.hijos > 0 ? retent - 0.02 : retent;
+    return empleado.bruto - (empleado.bruto * getRetent(empleado)); 
   }
 
   //neto mensual
   function getMonthlySalary(empleado){
-    var annualSalary = getAnnualSalary(empleado)
-    return empleado.pagas === 14 ? annualSalary/14 : annualSalary/12;
+    return getAnnualSalary(empleado)/empleado.pagas;
   }
 
 

@@ -1,6 +1,7 @@
 var nights = () => parseInt(document.getElementById("number-nights").value);
 //no aparece  NaN€
 // inicializar input noches = 0;
+//hecho
 
 function rate(){
     let select_type = document.getElementById('room-type-input').value;
@@ -39,6 +40,7 @@ function room_occupation(){
 }
 
 function parking(){
+    document.getElementById("number-nights-parking").innerText = '';
     var nights_parking = () => parseInt(document.getElementById("number-nights-parking").value);
     return nights_parking() * 10;
 }
@@ -49,6 +51,12 @@ function result(){
     document.getElementById("result").innerHTML = "Precio total de la reserva: " + total + "€";
 
 }
+
+function comprueba(valor){
+    if(valor.value < 0){
+      valor.value = 1;
+    }
+  }
 /*
 document.getElementById("room-type-input").addEventListener("change", result);
 document.getElementById("checkbox-spa").addEventListener("change", result);

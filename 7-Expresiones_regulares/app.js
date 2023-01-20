@@ -18,7 +18,7 @@ ibanValues.forEach(value => {
 // /** Caso 3 **/
 let iban1 = "ES6600190020961234567890";
 let patternIban1 = /^([A-Z]{2})(\d{2})\d{20}$/;
-
+//codigo pais: ES, 
 console.log(patternIban1.exec(iban1));
 
 
@@ -29,7 +29,7 @@ console.log(patternIban1.exec(iban1));
 // /** Caso 1 y 2 **/
 let carValues = ["2021 GMD", "2345-GMD", "4532BDB", "0320-AAA"];
 
-let patternCar = /^(\d{4})(\s|-?)([A-Z]{3})$/;
+let patternCar = /^(\d{4})[\s|-]?([A-Z]{3})$/;
 
 carValues.forEach(value => {
     console.log(`Regex match with ${value}?`, patternCar.test(value));
