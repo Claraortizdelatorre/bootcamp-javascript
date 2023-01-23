@@ -13,7 +13,7 @@ function checkEmpty(){
 
 /*Añadir array*/
 function result_add(){
-    if(!checkEmpty() || typeof(number()) != 'undefined'){
+    if(!checkEmpty()){
         arrayNumber.push(number())
         arrayNumber.push('+')
         print(number() + ' + ')
@@ -73,7 +73,8 @@ function setResult() {
         }else if(arrayNumber[i] === '/'){
             if(number() === 0){
                 alert("No se puede dividir entre 0")
-
+                result = 0
+                
             }else{
                 result /= arrayNumber[i+1];
             }
@@ -119,9 +120,11 @@ function print_result(){
 
         print(number() + ' = ' + result);
         document.getElementById("result").innerHTML = "Resultado:   " + parseInt(result);
-        inputReset();
+       
     }
+    inputReset();
 }
+
 
 
 //Reset
@@ -137,11 +140,6 @@ document.getElementById("subtract").addEventListener("click", result_subtract);
 document.getElementById("divide").addEventListener("click", result_divide);
 document.getElementById("multiply").addEventListener("click", result_multiply);
 document.getElementById("button-result").addEventListener("click", print_result);
-document.getElementById("add").addEventListener("change", print);
-document.getElementById("subtract").addEventListener("change", print);
-document.getElementById("divide").addEventListener("change", print);
-document.getElementById("multiply").addEventListener("change", print);
-document.getElementById("button-result").addEventListener("change", print);
 //document.getElementById("button-reset").addEventListener("click", reset);
 
 
