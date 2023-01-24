@@ -1,20 +1,45 @@
 import {getCarrito} from "./carrito.js";
 
-function hasShippingCosts(Carrito){
-    //comprobar long del carrito con la longitud del p prime
-}
+let div =  document.getElementById("app");
+let nameProduct = "";
+let priceProduct = "";
+let countProduct = "";
+let buttonProduct = "";
 
-//document.write("<h1>" + "Carrito de la compra" + "</h1>")
     getCarrito().forEach(function(article) {
-console.log(article.id)
+        console.log(article.name)
         let divOneProduct = document.createElement("div");
-        let numberList = document.createElement("ul");
-        numberList.innerHTML = "Producto:" +  article.name;
+        let ulProduct = document.createElement("ul");
+        nameProduct = document.createElement("p");
+        nameProduct.innerHTML = "Producto: " + article.name;
+        priceProduct = document.createElement("p");
+        priceProduct.innerHTML = "Precio: " + article.price + "€/ud";
+        countProduct = document.createElement("p");
+        countProduct.innerHTML = "Cantidad: " + article.count;
 
-        divOneProduct.appendChild(numberList);
+        //boton
+        buttonProduct = document.createElement("button");
+        buttonProduct.setAttribute('onclick', borrar(divOneProduct));
+        buttonProduct.innerHTML = "Eliminar";
+
+
+        //form.appendChild(divProduct);
+        div.appendChild(divOneProduct);
+        divOneProduct.appendChild(ulProduct);
+        ulProduct.appendChild(nameProduct);
+        ulProduct.appendChild(priceProduct);
+        ulProduct.appendChild(countProduct);
+        ulProduct.appendChild(buttonProduct);
+
 
 });
 
-    //let div_total = document.write("<div>Total: " + app.total() + "</div>")
+function borrar(divOneProduct) {
+
+    div.removeChild(divOneProduct);
+  
+   };
+
+
 
  
