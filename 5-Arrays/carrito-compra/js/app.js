@@ -1,60 +1,58 @@
 import {getCarrito} from "./carrito.js";
-//Listar productos
-function list(){
-    getCarrito().forEach(function(article) {
-        console.log(article.name + " - " + article.price + "€/ud")
-    });
-}
-// poner cantidad, prime o no, 
-//Borrar producto
-//eliminar por consola
-//js html aparte
-function delete_product(){
-    var borrar = process.stdout.write("Ingrese el id del producto a eliminar:");
 
-    for(let i = 0; i < getCarrito().length; i++){
-        if(getCarrito()[i].id === borrar){
-            delete(getCarrito()[i].id)
-           }
-    }
-}
 
-//Calcular total
-function total(){
+function list(getCarrito){
+
+    console.log("CARRITO DE LA COMPRA")
     let total = 0;
-    getCarrito().forEach(function(article) {
-       total += article.price*article.count
+    let contador = 1;
+
+    getCarrito.forEach(function(article) {
+        console.log(contador + ". " + "Producto: " + article.name )
+        console.log("Precio:  " + article.price + "€/ud")
+        console.log("Cantidad:  " + article.count)
+        total += article.price * article.count;
+        contador++;
     });
-
-    //aplicar descuento en otra funcion
-    if(total > 100){
-        total = total - (total*0.05)
-    }
-
-    console.log("Total :" + total.toFixed(2))
-    return total.toFixed(2);
+    console.log("---------------------------------")
+    console.log("TOTAL:  " + total)
+    console.log("---------------------------------")
 }
 
+// poner cantidad, prime o no, 
 
-
-
-function filter_prime(){ 
-    console.log("-  PRIME - ")
-    const result = getCarrito().filter(product => product.premium === true);
-
-    if(getCarrito().length === result.length){
-        console.log("Pedido sin gastos de envío")
-    }else{
-        console.log("Pedido con gastos de envío")
+function delete_product(getCarrito){
+      
+        console.log("Escribe el ID del producto a eliminar: ");
+        var stdin = process.openStdin();
+    
+        stdin.addListener("data", function(entradaPorTeclado) {
+           
+            for (let i = 0; i < getCarrito.length; i++) {
+                if ( getCarrito[i].id === parseInt(entradaPorTeclado.toString())) {
+                    getCarrito.splice(i,1);  
+                    console.log("Eliminado!")
+                }
+            } 
+              
+        list(getCarrito); 
+        });         
     }
 
-    list(result);
+    function filter_prime(getCarrito){
+        const newCarrito = []
+        for (const product of getCarrito) {
+                 if(product.premium === true) {
+                    newCarrito.push(product)
+                }
+    }
+    console.log("---------------------------------")
+    console.log("PRODUCTOS PRIME " )
+    console.log("---------------------------------")
+    list(newCarrito);
 }
-
 
 //Result
-list()
-delete_product();
-list();
-total();
-filter_prime();
+list(getCarrito());
+filter_prime(getCarrito());
+delete_product(getCarrito());
