@@ -5,35 +5,39 @@ import * as Utils from "./utils";
 
 window.onload=() => {
  
-    var pag=0;
+    var pag=1;
+    getPagCharacters(pag);
 
     let filter = document.getElementById('pagina');
- 
-    filter.onchange=function() {
-     pag = document.getElementById('pagina').value;
-   
+
+    filter.onchange=function() { //cargar personajes de la pagína seleccionada
+        pag = document.getElementById('pagina').value;
+        getPagCharacters(pag);
+    }  
+}
+
+
+/*obtener personajes*/
+function getPagCharacters(pag){
+
     DataBusiness.getAllCharacters(pag).then(datos => {
-       
+   
         const users = datos;
         document.getElementById("root").innerText="";
         for (let user of users){
           //  console.log("ID" + user.id)
+        //  console.log("usuariosssss" + user)
             const node = Utils.createCharacterRow(user);
             document.getElementById("root").append(node);     
 
             node.onclick = function(){
-                DataBusiness.getSingleCharacter(user.id).then(datos2 => {
-                    Utils.showCharacter(datos2)
-                  
-                 
-                    const node = Utils.showCharacter(datos2);    
-                    document.getElementById("root").append(node);
-                    
-                });
+
+                   
+                DataBusiness.getCharacterById(user.id);
+
+            
             };
         }
     })   
+    
 }
-   
-}
-

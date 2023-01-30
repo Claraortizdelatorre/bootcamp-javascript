@@ -21,7 +21,6 @@ const createAvatar = (character) => {
   return element;
 };
 
-
 const createRowText = (character) => {
   const element = document.createElement("span");
   element.append(character.name);
@@ -38,7 +37,7 @@ const createAvatarDetail = (character) => {
 };
 
 const showCharacter = (character) => {
-  console.log("character", character);
+  // console.log("character", character);
   const characterDetail = document.getElementById("character-detail");
 
   characterDetail.innerHTML = "";

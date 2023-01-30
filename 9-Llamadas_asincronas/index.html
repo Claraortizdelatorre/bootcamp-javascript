@@ -8,24 +8,21 @@
     <title>Document</title>
   </head>
   <body>
+    
     <h1>Rick and Morty Characters</h1>
+    <div id="root"></div>
+    <div id="character-detail"></div>
 
     <h3>PAGINA
       <select name="pagina" id="pagina" >
-        <option value="1">Selecciona una página</option>
-      <script>
-        for(let i=1; i <=42; i++){
-          document.write(`<option value="${i}">${i}</option>`)
-        }
-      </script>
+      
+        <script>
+          for(let i=1; i <=42; i++){
+            document.write(`<option value="${i}">${i}</option>`)
+          }
+        </script>
       </select>
-      </h3>
-  
-    <div id="root"></div>
-
-
- 
-
+    </h3>
     <script type="module" src="./src/index.js"></script>
   </body>
 </html>
