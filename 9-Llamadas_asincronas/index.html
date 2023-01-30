@@ -11,7 +11,8 @@
     <h1>Rick and Morty Characters</h1>
 
     <h3>PAGINA
-      <select name="pagina" id="pagina" onchange="jsFunction(this.value)">
+      <select name="pagina" id="pagina" >
+        <option value="1">Selecciona una página</option>
       <script>
         for(let i=1; i <=42; i++){
           document.write(`<option value="${i}">${i}</option>`)

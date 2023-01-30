@@ -17,8 +17,9 @@ function getSingleCharacter(id) {
         .get("https://rickandmortyapi.com/api/character/", {id})
         .then(response => {
             console.log("respuesta primera " + response)
-            data.results.map(item=>{
-                consol
+            
+            response.data.results.map(item=>{
+                console.log(item.name)
             })
             return response.data.results.name;
     })
@@ -26,10 +27,4 @@ function getSingleCharacter(id) {
 }
 
 
-function jsFunction(){
-    var myselect = document.getElementById("pagina");
-    alert(myselect.options[myselect.selectedIndex].value);
-  }
-
-  
 export {getAllCharacters, getSingleCharacter}

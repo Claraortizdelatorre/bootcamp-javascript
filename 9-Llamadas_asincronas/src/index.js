@@ -5,9 +5,15 @@ import * as Utils from "./utils";
 
 window.onload=() => {
  
-      jsFunction(1);
-    DataBusiness.getAllCharacters().then(datos => {
-       // console.log(datos);
+    var pag=0;
+
+    let filter = document.getElementById('pagina');
+ 
+    filter.onchange=function() {
+     pag = document.getElementById('pagina').value;
+   
+    DataBusiness.getAllCharacters(pag).then(datos => {
+       
         const users = datos;
         document.getElementById("root").innerText="";
         for (let user of users){
@@ -15,32 +21,19 @@ window.onload=() => {
             const node = Utils.createCharacterRow(user);
             document.getElementById("root").append(node);     
 
-           /* node.onclick = function(){
-
+            node.onclick = function(){
                 DataBusiness.getSingleCharacter(user.id).then(datos2 => {
-
-                   datos2.map(item=>{
-                        Utils.showCharacter(item)
-                    })
-
-                 
-                   
+                    Utils.showCharacter(datos2)
+                  
                  
                     const node = Utils.showCharacter(datos2);    
                     document.getElementById("root").append(node);
                     
                 });
-            };*/
+            };
         }
     })   
-
+}
    
 }
 
-function jsFunction(pagina){
-    // var myselect = document.getElementById("pagina");
-     return console.log("pagina" + pagina);
-   }
-
-
-jsFunction(1);
