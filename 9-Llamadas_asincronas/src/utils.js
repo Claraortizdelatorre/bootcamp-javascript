@@ -21,6 +21,7 @@ const createAvatar = (character) => {
   return element;
 };
 
+
 const createRowText = (character) => {
   const element = document.createElement("span");
   element.append(character.name);

@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-function getAllCharacters() {
+
+function getAllCharacters(pagina) {
+   console.log(pagina)
    return axios
-    .get("https://rickandmortyapi.com/api/character")
+    .get("https://rickandmortyapi.com/api/character/?page="+pagina)
     .then(response => {
         return response.data.results; 
     })
@@ -14,11 +16,20 @@ function getSingleCharacter(id) {
     return axios
         .get("https://rickandmortyapi.com/api/character/", {id})
         .then(response => {
-            console.log("respuesta primera " + response.data.results)
-            return response.data.results;
+            console.log("respuesta primera " + response)
+            data.results.map(item=>{
+                consol
+            })
+            return response.data.results.name;
     })
         .catch(error => console.log("Se ha producido un error"));
 }
 
 
+function jsFunction(){
+    var myselect = document.getElementById("pagina");
+    alert(myselect.options[myselect.selectedIndex].value);
+  }
+
+  
 export {getAllCharacters, getSingleCharacter}
