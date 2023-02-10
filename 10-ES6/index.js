@@ -51,9 +51,11 @@ console.log(excludedId(objectWithId));
 
 //wordsStartingWithA tal que, dado un array de palabras como entrada, devuelva otro array filtrado con aquellas palabras que empiecen por a.
 
-const words = ["Andaluz", "Pera", "Cacahuete", "Kiwi", "Amiga"];
+const words = ["Andaluz", "Pera", "Cacahuete", "aKiwi", "Amiga"];
 
-const wordsStartingWithA = words => words.filter(word => word.startsWith("A"));
+
+const wordsStartingWithA = words => words.filter(word => word.toUpperCase().startsWith("A"));
+
 console.log(wordsStartingWithA(words));
 
 
@@ -141,7 +143,7 @@ const str3 = "hola que tal como estas hoy";
 const sortCharacters = (str) => {
     return Array.from(str.toLowerCase())
         .filter(a => a !== ' ')
-        .sort((a, b) => a > b ? 1 : -1);
+        .sort((a, b) => a > b ? 1 : -1).join('');
 }
 
 console.log(sortCharacters(str3));
@@ -149,7 +151,7 @@ console.log(sortCharacters(str3));
 //shout tal que, dadas múltiples palabras como entrada, devuelva todas las palabras concatenadas en un texto donde aparezcan en mayúsculas y con exclamaciones.
 
 const shout = (...words) => {
-    return words.map(word => `¡${word.toUpperCase()}!`);
+    return words.map(word => `¡${word.toUpperCase()}!`).join('');
 }
 
 console.log(shout("manzana", "perro", "gato"));
@@ -165,9 +167,9 @@ const shoppingCart = [
   ];
 
 // A
-const getTax = (tax, products) => products.map(product => ({...product, tax: (product.price * 0.21).toFixed(2)}));
+const getTax = (products) => products.map(product => ({...product, tax: (product.price * 0.21 * product.units).toFixed(2)}));
 
-console.log(getTax("tax", shoppingCart));
+console.log(getTax(shoppingCart));
 
 // B
 const orderShoppingCart = (products) => products.sort((a, b) => a.units < b.units ? 1 : -1);
@@ -186,7 +188,7 @@ console.log(getSubtotal(shoppingCart));
 
 const getOrderedList = (products) => {
     return products.sort((a, b) => a.category > b.category ? 1 : -1)
-                    .map((product => (product.product + ": " + ((product.price * product.units) * 0.21).toFixed(2) + "€")));
+                    .map((product => (product.product + ": " + ((product.price * product.units) * 1.21).toFixed(2) + "€")));
 }
 
 console.log(getOrderedList(shoppingCart));

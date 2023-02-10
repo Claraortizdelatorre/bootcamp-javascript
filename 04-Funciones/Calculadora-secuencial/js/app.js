@@ -94,13 +94,13 @@ function inputReset() {
 
 function print(symbol){
    
-   var result;
+   var result="";
    arrayResult.push(symbol);
    document.getElementById("print").innerHTML = "";
 
    if(isNaN(number())){
     document.getElementById("result").innerHTML =  "Rellena el campo";
-   }else{
+   }else{ 
     for(let i = 0 ; i < arrayResult.length; i++){
         result += arrayResult[i];
        }

@@ -1,3 +1,5 @@
+
+
 const reservas = [
     {
       tipoHabitacion: "standard",
@@ -19,8 +21,8 @@ const reservas = [
 
 
   class Reserva {
-    constructor() {
-        this._reservas = []; //privada
+    constructor(reservas) {
+        this._reservas = reservas; //privada
         this._subtotal = 0;
         this._total = 0;
     }
@@ -38,37 +40,26 @@ const reservas = [
         return person > 1 ? 40 * (person - 1) : 0;
     }
 
-    breakfastIncluded(breakfast) {
-        return breakfast ? 15 : 0;
-    }
+   
 
     getSubtotal() {
-        this._subtotal = reservas.reduce(
-            (sum, { tipoHabitacion, pax, noches, desayuno }) => sum + noches * (this.getRoomType(tipoHabitacion) + this.extraPerson(pax) + this.breakfastIncluded(desayuno) * pax), 0
+         this._subtotal = reservas.reduce(
+            (sum, { tipoHabitacion, pax, noches }) => sum + noches * (this.getRoomType(tipoHabitacion) + this.extraPerson(pax) * pax), 0
         );
     }
 
     getTotal() {
         const IVA = 1.21;
-
-        this._total = reservas.reduce(
-            (sum, { tipoHabitacion, pax, noches, desayuno }) => sum + noches * (this.getRoomType(tipoHabitacion) + this.extraPerson(pax) + this.breakfastIncluded(desayuno) * pax) * IVA, 0
-        );
+         this._total = this._subtotal * IVA;
+        
     }
 
-    get subtotal() {
-        return this._subtotal;
-    }
+   print(){
 
-    get total() {
-        return this._total;
-    }
+console.log("Subtotal particular: ", this._subtotal + "€");
+console.log("Total particular con IVA: ", this._total + "€");
 
-    set reservas(nuevaReserva) {
-        this._reservas = nuevaReserva;
-        this.getSubtotal();
-        this.getTotal();
-    }
+   } 
 }
 
 class PrivateClient extends Reserva {
@@ -83,24 +74,26 @@ class TourOperator extends Reserva {
     }
 
     getRoomType(type) {
-        return type = 100;
+        return 100;
     }
 
-    get total() {
-        return (this._total * 0.85).toFixed(2);
+    getSubtotal() { //que devuelva el 85 del subtotal, el descuento se aplica en subtotal
+        super.getSubtotal();
+        this._subtotal = this._subtotal * 0.85;
     }
+
 }
 
-const privateClient = new PrivateClient();
-privateClient.reservas = reservas;
 
 console.log("***** Caso 1 *****");
-console.log("Subtotal particular: ", privateClient.subtotal + "€");
-console.log("Total particular con IVA: ", privateClient.total + "€");
+const privateClient = new PrivateClient();
+privateClient.getSubtotal();
+privateClient.getTotal();
+privateClient.print();
 
-const tourOperator = new TourOperator();
-tourOperator.reservas = reservas;
 
 console.log("***** Caso 2 *****");
-console.log("Subtotal touroperador: ", tourOperator.subtotal + "€");
-console.log("Total touroperador: ", tourOperator.total + "€");
+const tourOperator = new TourOperator();
+tourOperator.getSubtotal();
+tourOperator.getTotal();
+tourOperator.print();

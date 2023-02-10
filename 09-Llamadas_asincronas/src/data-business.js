@@ -6,27 +6,22 @@ function getAllCharacters(pagina) {
   return axios
     .get("https://rickandmortyapi.com/api/character/?page=" + pagina)
     .then((response) => {
+      console.log(response.data);
       return response.data.results;
+      
     })
     .catch((error) => console.log("Se ha producido un error"));
 }
 
-/*
 function getCharacterById(id) {
     console.log("el id que le paso" +id)
     return axios
         .get(`https://rickandmortyapi.com/api/character/${id}`)
         .then(response => {
-           Utils.showCharacter(response);  
+           Utils.showCharacter(response.data);  
+           console.log(response.data);
     }).catch(error => console.log("Se ha producido un error"));
 }
-*/
-const getCharacterById = (character) => {
-  fetch(`https://rickandmortyapi.com/api/character/${character}`)
-    .then((res) => res.json())
-    .then((data) => {
-      Utils.showCharacter(data);
-    });
-};
 
+//recuperar n de pag
 export { getAllCharacters, getCharacterById };
