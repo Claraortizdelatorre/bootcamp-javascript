@@ -8,7 +8,7 @@ let nameProduct = "";
 let priceProduct = "";
 let countProduct = "";
 let buttonProduct = document.getElementById("button-delete");
-
+//recorrrer la lista en esa lista
 function product() {
   getCarrito().forEach(function (product) {
     let divOneProduct = document.createElement("div");

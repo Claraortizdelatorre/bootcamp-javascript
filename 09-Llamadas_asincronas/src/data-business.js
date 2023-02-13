@@ -7,8 +7,9 @@ function getAllCharacters(pagina) {
     .get("https://rickandmortyapi.com/api/character/?page=" + pagina)
     .then((response) => {
       console.log(response.data);
+      //llamar funcion addpages(response.data.info.pages);
       return response.data.results;
-      
+
     })
     .catch((error) => console.log("Se ha producido un error"));
 }
